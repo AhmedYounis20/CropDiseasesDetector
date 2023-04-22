@@ -13,6 +13,7 @@ const AboutCard = styled(Card)`
   justify-content: flex-start;
   flex: 1;
   padding-left: 10px;
+  color: violet;
 `;
 const AboutItemTitle = styled.Text`
   font-size: 30px;
@@ -24,10 +25,10 @@ export const AboutScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView style={{ marginTop: 20 }}>
-        <TouchableOpacity onPress={() => navigation.navigate("teamScreen")}>
+        <TouchableOpacity onPress={() => navigation.navigate("projectDescriptionScreen")}>
           <AboutCard>
             <View style={{ flexDirection: "row" }}>
-              <MaterialIcons name="menu-book" size={50} />
+              <MaterialIcons name="menu-book" size={50}  color={"violet"} />
               <AboutItemTitle>Project Desciption</AboutItemTitle>
             </View>
           </AboutCard>
@@ -35,7 +36,7 @@ export const AboutScreen = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate("teamScreen")}>
           <AboutCard>
             <View style={{ flexDirection: "row" }}>
-              <MaterialIcons name="groups" size={50} />
+              <MaterialIcons name="groups" size={50}  color={"violet"}/>
               <AboutItemTitle>Team Members</AboutItemTitle>
             </View>
           </AboutCard>

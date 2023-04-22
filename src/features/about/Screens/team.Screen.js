@@ -7,7 +7,7 @@ export const TeamScreen = () => {
     <SafeArea>
         <View style={{padding:20}}>
             <Text style={{fontSize:30,fontStyle:"italic",color:"violet"}}>
-                Team
+                Team 7
             </Text>
         </View>
       <FlatList

@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { RestaurantsNavigator } from "./sensors.navigator";
+import { SensorsNavigator } from "./sensors.navigator";
 import { AboutNavigator } from "./about.navigator";
 import { ApplicationNavigator } from "./application.navigator";
 
@@ -30,7 +30,7 @@ export const AppNavigator = () => (
       })}
     >
       <Tab.Screen name="Application" component={ApplicationNavigator} />
-      <Tab.Screen name="Sensors" component={RestaurantsNavigator} />
+      <Tab.Screen name="Sensors" component={SensorsNavigator} />
       <Tab.Screen name="About" component={AboutNavigator} />
     </Tab.Navigator>
   </NavigationContainer>
