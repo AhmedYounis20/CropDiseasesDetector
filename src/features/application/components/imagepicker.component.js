@@ -13,12 +13,11 @@ export const ImagePickerComponent = ({ navigation }) => {
       allowsEditing: true,
       quality: 1,
     });
-
-    // console.log(result);
-
+    console.log(result);
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
-      navigation.navigate("ImageView", { uri: result.assets[0].uri });
+      setImage(result.assets);
+      // console.log(result.assets);
+      //navigation.navigate("ImageView", { uri: result });
     }
   };
 

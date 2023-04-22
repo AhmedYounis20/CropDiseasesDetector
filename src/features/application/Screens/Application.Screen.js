@@ -30,6 +30,7 @@ export const ApplicationScreen = ({ navigation }) => {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       quality: 1,
+      base64:true
     });
 
     // console.log(result);

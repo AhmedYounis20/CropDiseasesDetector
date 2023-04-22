@@ -9,8 +9,8 @@ const ResultText=styled(Text)`
   font-size:25px;
   font-weight:bold;
   font-style:italic;
-
 `;
+
 export const ImageView = ({ route }) => {
   const { uri } = route.params;
   return (

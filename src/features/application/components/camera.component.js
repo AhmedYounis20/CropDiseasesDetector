@@ -6,9 +6,16 @@ import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 export const CameraComponent = ({ navigation }) => {
   const cameraRef = useRef(null);
   const [photoUri, setPhotoUri] = useState(null);
+  const [permission, requestPermission] = Camera.useCameraPermissions();
+
+  if (!permission) {
+    // Camera permissions are still loading
+    return <View />;
+  }
 
   const takePicture = async () => {
     if (cameraRef.current) {
+      requestPermission();
       const { uri } = await cameraRef.current.takePictureAsync();
       navigation.navigate("ImageView", { uri: uri });
     }
