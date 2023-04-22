@@ -36,7 +36,7 @@ export const ProjectDescriptionScreen = () => {
             </Row>
           );
         }}
-        keyExtractor={(item) => item.index}
+        keyExtractor={(item) => item.body}
       />
     </SafeArea>
   );
