@@ -12,10 +12,17 @@ const DeveloperInfoContainer = styled(Card)`
 
 const InfoView = styled.View`
   margin: 10px;
+  margin-left:0px;
+  flex-wrap:wrap;
+  width:80%;
 `;
 const DeveloperName = styled.Text`
   font-style: italic;
   font-weight: bold;
+`;
+const Email = styled.Text`
+flex-wrap:wrap;
+width:89%;
 `;
 
 export const DeveloperInfoCard = ({ developer = {} }) => {
@@ -43,13 +50,14 @@ export const DeveloperInfoCard = ({ developer = {} }) => {
               height: 90,
               width: 90,
               margin: 5,
+              marginRight:3,
               borderRadius: 55,
             }}
           />
         </View>
         <InfoView>
           <DeveloperName>{name}</DeveloperName>
-          <Text>{email}</Text>
+          <Email>{email}</Email>
         </InfoView>
       </View>
     </DeveloperInfoContainer>
