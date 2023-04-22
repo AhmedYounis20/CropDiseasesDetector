@@ -3,6 +3,7 @@ import {
   TransitionPreset,
   TransitionPresets,
 } from "@react-navigation/stack";
+import React from "react";
 import { SensorsScreen } from "../../features/sensors/screens/sensors.Screen";
 import { AccelerometerComponent } from "../../features/sensors/components/AccelerometerComponent";
 import { GyroscopeComponent } from "../../features/sensors/components/GyroscopeComponent";
@@ -11,7 +12,8 @@ import { LightComponent } from "../../features/sensors/components/LightComponent
 import { PedometerComponent } from "../../features/sensors/components/PedometerComponent";
 import { MagnetometerComponent } from "../../features/sensors/components/MagnetometerComponent";
 import { CameraComponent } from "../../features/sensors/components/CameraComponent";
-import { ProximityComponent } from "../../features/sensors/components/ProximityComponent";
+import { LocationComponent } from "../../features/sensors/components/LocationComponent";
+import { BatteryComponent } from "../../features/sensors/components/BatteryComponent";
 const SensorsStack = createStackNavigator();
 
 export const SensorsNavigator = () => {
@@ -36,7 +38,8 @@ export const SensorsNavigator = () => {
         component={MagnetometerComponent}
       />
       <SensorsStack.Screen name="Camera" component={CameraComponent} />
-      <SensorsStack.Screen name="Proximity" component={ProximityComponent} />
+      <SensorsStack.Screen name="Location" component={LocationComponent} />
+      <SensorsStack.Screen name="Battery" component={BatteryComponent} />
     </SensorsStack.Navigator>
   );
 };

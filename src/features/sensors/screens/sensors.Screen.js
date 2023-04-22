@@ -61,7 +61,6 @@ export const SensorsScreen = ({ navigation }) => {
 
 const styles=StyleSheet.create({
   sensorsList:{
-    flex:1,
     margin:10,
     marginTop:20
   }

@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
-import { View, Image } from "react-native";
+import { View, Image, Text } from "react-native";
 import * as ts from "@tensorflow/tfjs";
 import { fetch, bundleResourceIO } from "@tensorflow/tfjs-react-native";
+import styled from "styled-components";
+
+const ResultText=styled(Text)`
+  font-size:25px;
+  font-weight:bold;
+  font-style:italic;
+
+`;
 export const ImageView = ({ route }) => {
   const { uri } = route.params;
-  const [plantClassifier, setPlantClassifier] = useState(null);
-  useEffect(async () => {
-      console.log("[+] Application Started");
-      const modelJson = await require("./../../../../assets/model/model.json");
-      const modelWeight = await require("./../../../../assets/model/group1-shared.bin");
-      const plantdetector = await ts.loadLayersModel(bundleResourceIO(modelJson,modelWeight));
-      //setPlantClassifier(plantdetector);
-      //console.log(ClassiffyPlant());
-      console.log(plantdetector);
-      return plantdetector;
-  }, []);
-  const ClassiffyPlant = () => {
-    return plantClassifier.predict(uri).data();
-  };
   return (
     <SafeArea>
+      <View style={{flex:1,alignItems:"center",justifyContent:"flex-start"}}>
+      <View style={{height:"70%",width:"70%",flexDirection:"row",alignItems:"center",justifyContent:"center",}}>
       <View style={{ flex: 1 }}>
-        <Image source={{ uri: uri }} style={{ flex: 1 }} resizeMode="contain" />
+        <Image source={{ uri: uri }} style={{ flex: 1}} resizeMode="contain" />
+      </View>
+      </View>
+      <ResultText>Healthy</ResultText>
       </View>
     </SafeArea>
   );
