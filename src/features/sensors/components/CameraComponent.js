@@ -2,7 +2,7 @@ import { Camera, CameraType } from "expo-camera";
 import { useState } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
-
+import { Entypo } from "@expo/vector-icons";
 export const CameraComponent = () => {
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -34,15 +34,15 @@ export const CameraComponent = () => {
 
   return (
     <SafeArea>
-    <View style={styles.container}>
-      <Camera style={styles.camera} type={type}  >
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
-        </View>
-      </Camera>
-    </View>
+      <View style={styles.container}>
+        <Camera style={styles.camera} type={type}>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
+              <Entypo name="cycle" size={50} color={"rgba(255,255,255,0.7)"} />
+            </TouchableOpacity>
+          </View>
+        </Camera>
+      </View>
     </SafeArea>
   );
 };
@@ -51,18 +51,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    
   },
   camera: {
     flex: 1,
   },
   buttonContainer: {
-    marginTop:"180%",
-    margin:"5%",
-    backgroundColor: "blue",
+    bottom: "8%",
+    right: "5%",
     zIndex: 4,
-    flexDirection:"row",
-    width:"90%",
+    flexDirection: "row",
+    width: "15%",
     position: "absolute",
   },
   button: {
