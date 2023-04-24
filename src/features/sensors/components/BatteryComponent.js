@@ -37,7 +37,7 @@ export const BatteryComponent = () => {
           : "Unknown"}
       </Text>
       <Text>
-        Battery State:{" "}
+        Is low power mode enabled:{" "}
         {batteryPowerState !== null ? `${batteryPowerState}` : false}
       </Text>
     </View>
