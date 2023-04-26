@@ -4,7 +4,6 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import { ApplicationScreen } from "../../features/application/Screens/Application.Screen";
-import { ImagePickerComponent } from "../../features/application/components/imagepicker.component";
 import { CameraComponent } from "../../features/application/components/camera.component";
 import { ImageView } from "../../features/application/components/imageview.component";
 
@@ -21,10 +20,6 @@ export const ApplicationNavigator = () => {
       <ApplicationStack.Screen
         name="ApplicationScreen"
         component={ApplicationScreen}
-      />
-      <ApplicationStack.Screen
-        name="ImagePickerComponent"
-        component={ImagePickerComponent}
       />
       <ApplicationStack.Screen
         name="CameraScreen"
