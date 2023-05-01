@@ -70,7 +70,7 @@ export const ApplicationScreen = ({ navigation }) => {
       const predictionsdata = await model.predict(imagesTensor);
       let pred = predictionsdata.array(); //split by batch size
       // console.log("")
-      return predictionsdata;
+      return pred;
     } catch (e) {
       console.log(e);
     }
