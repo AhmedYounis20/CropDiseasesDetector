@@ -77,6 +77,7 @@ export const ImageView = ({ route }) => {
 
   useEffect(() => {
     const load = async () => {
+      setIsLoading(true);
       setResult(await getPredictions(uri));
       setIsLoading(false);
     };
@@ -87,7 +88,8 @@ export const ImageView = ({ route }) => {
       {isLoading ? (
         <View style={{flex:1,alignContent:"center",alignSelf:"center",justifyContent:"center"}}>
 
-        <ActivityIndicator animating={true} size={50} />
+        <ActivityIndicator animating={true} size={50} color="rgba(100,100,255,1)" />
+          <Text style={{marginTop:20,fontSize:16,fontWeight:"bold",color:"rgba(100,100,255,1)"}}>Please wait for prediction...</Text>
         </View>
       ) : (
         <View
