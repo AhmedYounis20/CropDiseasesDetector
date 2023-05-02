@@ -89,7 +89,7 @@ export const ImageView = ({ route }) => {
         <View style={{flex:1,alignContent:"center",alignSelf:"center",justifyContent:"center"}}>
 
         <ActivityIndicator animating={true} size={50} color="rgba(100,100,255,1)" />
-          <Text style={{marginTop:20,fontSize:16,fontWeight:"bold",color:"rgba(100,100,255,1)"}}>Please wait for prediction...</Text>
+          <Text style={{marginTop:20,fontSize:16,fontWeight:"bold",color:"rgba(100,100,255,1)",fontStyle:"italic"}}>Please wait for prediction...</Text>
         </View>
       ) : (
         <View
@@ -116,9 +116,11 @@ export const ImageView = ({ route }) => {
               />
             </View>
           </View>
-          <ResultText>{result}</ResultText>
+          <ResultText>Healthy : {Math.ceil(result[0]*100)}%</ResultText>
+          <ResultText>powdery mildew : { Math.floor(result[1]*100)}%</ResultText>
         </View>
       )}
+      {}
     </SafeArea>
   );
 };
