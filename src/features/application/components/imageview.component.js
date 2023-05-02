@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { View, Image, Text } from "react-native";
 import styled from "styled-components";
-
 import * as tf from "@tensorflow/tfjs";
 import { bundleResourceIO, decodeJpeg } from "@tensorflow/tfjs-react-native";
 import * as FileSystem from "expo-file-system";
@@ -39,20 +38,15 @@ const transformImageToTensor = async (uri) => {
   //normalize; if a normalization layer is in the model, this step can be skipped
   const tensorScaled = imgTensor;
   let img = tf.reshape(tensorScaled, [1, imageSize, imageSize, 3]);
-  // img = tf.cast(img, 'float32');
-  // img = tf.div(tensorScaled, tf.scalar(255.0));
-  // console.log(img.shape)
   return img;
 };
 const makePredictions = async (batch, model, imagesTensor) => {
-  //.ts: const makePredictions = async (batch:number, model:tf.LayersModel,imagesTensor:tf.Tensor<tf.Rank>):Promise<tf.Tensor<tf.Rank>[]>=>{
   //cast output prediction to tensor
   console.log(imagesTensor);
   try {
     console.log("before Pred::");
     const predictionsdata = await model.predict(imagesTensor);
     let pred = predictionsdata.array(); //split by batch size
-    // console.log("")
     return pred;
   } catch (e) {
     console.log(e);
@@ -72,13 +66,14 @@ const getPredictions = async (image) => {
 
 export const ImageView = ({ route }) => {
   const { uri } = route.params;
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState([0.9, 0.1]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
       setIsLoading(true);
-      setResult(await getPredictions(uri));
+      const predictionResult = await getPredictions(uri);
+      if (predictionResult) setResult(predictionResult);
       setIsLoading(false);
     };
     load();
@@ -86,10 +81,30 @@ export const ImageView = ({ route }) => {
   return (
     <SafeArea>
       {isLoading ? (
-        <View style={{flex:1,alignContent:"center",alignSelf:"center",justifyContent:"center"}}>
-
-        <ActivityIndicator animating={true} size={50} color="rgba(100,100,255,1)" />
-          <Text style={{marginTop:20,fontSize:16,fontWeight:"bold",color:"rgba(100,100,255,1)",fontStyle:"italic"}}>Please wait for prediction...</Text>
+        <View
+          style={{
+            flex: 1,
+            alignContent: "center",
+            alignSelf: "center",
+            justifyContent: "center",
+          }}
+        >
+          <ActivityIndicator
+            animating={true}
+            size={50}
+            color="rgba(100,100,255,1)"
+          />
+          <Text
+            style={{
+              marginTop: 20,
+              fontSize: 16,
+              fontWeight: "bold",
+              color: "rgba(100,100,255,1)",
+              fontStyle: "italic",
+            }}
+          >
+            Please wait for prediction...
+          </Text>
         </View>
       ) : (
         <View
@@ -116,11 +131,12 @@ export const ImageView = ({ route }) => {
               />
             </View>
           </View>
-          <ResultText>Healthy : {Math.ceil(result[0]*100)}%</ResultText>
-          <ResultText>powdery mildew : { Math.floor(result[1]*100)}%</ResultText>
+          <ResultText>Healthy : {Math.ceil(result[0] * 100)}%</ResultText>
+          <ResultText>
+            powdery mildew : {Math.floor(result[1] * 100)}%
+          </ResultText>
         </View>
       )}
-    
     </SafeArea>
   );
 };
