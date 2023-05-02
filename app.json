@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -23,11 +21,19 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [
-        "BODY_SENSORS"
-      ]
+        "BODY_SENSORS",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "package": "com.ahmedyounis20.CropDiseasesDetector"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "638351c8-d5bd-4ae9-9398-a0c64429f493"
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity,Button } from "react-native";
 import { Camera } from "expo-camera";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 
@@ -12,11 +12,23 @@ export const CameraComponent = ({ navigation }) => {
     // Camera permissions are still loading
     return <View />;
   }
-
+  if (!permission.granted) {
+    // Camera permissions are not granted yet
+    return (
+      <SafeArea style={{flex:1,alignItems:"center",justifyContent:"center"}}>
+        <View>
+          <Text style={{ textAlign: "center" }}>
+            We need your permission to show the camera
+          </Text>
+          <Button onPress={requestPermission} title="grant permission" />
+        </View>
+      </SafeArea>
+    );
+  }
   const takePicture = async () => {
     if (cameraRef.current) {
       requestPermission();
-      const { uri } = await cameraRef.current.takePictureAsync();
+      const { uri } = await cameraRef.current.takePictureAsync(false);
       navigation.navigate("ImageView", { uri: uri });
     }
   };
