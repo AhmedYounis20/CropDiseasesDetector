@@ -66,7 +66,7 @@ const getPredictions = async (image) => {
 
 export const ImageView = ({ route }) => {
   const { uri } = route.params;
-  const [result, setResult] = useState([0.9, 0.1]);
+  const [result, setResult] = useState([[0.9, 0.1]]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -132,9 +132,9 @@ export const ImageView = ({ route }) => {
               />
             </View>
           </View>
-          <ResultText>Healthy : {Math.ceil(result[0] * 100)}%</ResultText>
+          <ResultText>Healthy : {Math.ceil(result[0][0] * 100)}%</ResultText>
           <ResultText>
-            powdery mildew : {Math.floor(result[1] * 100)}%
+            powdery mildew : {Math.floor(result[0][1] * 100)}%
           </ResultText>
         </View>
       )}
