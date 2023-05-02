@@ -74,6 +74,7 @@ export const ImageView = ({ route }) => {
       setIsLoading(true);
       const predictionResult = await getPredictions(uri);
       if (predictionResult) setResult(predictionResult);
+      console.log("result",result[0]);
       setIsLoading(false);
     };
     load();
