@@ -120,7 +120,7 @@ export const ImageView = ({ route }) => {
           <ResultText>powdery mildew : { Math.floor(result[1]*100)}%</ResultText>
         </View>
       )}
-      {}
+    
     </SafeArea>
   );
 };
